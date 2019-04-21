@@ -13,6 +13,7 @@ class ProductProvider extends React.Component {
         cartOpen: false,
         cartItems: 0,
         links: linkData,
+        caft: []
     }
 
     //handle side bar
