@@ -166,19 +166,65 @@ class ProductProvider extends React.Component {
 
     //cart functionality
     increment = (id) => {
-        console.log('increment',id);
-    }
+        let tempCart = [...this.state.cart];
+        const cartItem = tempCart.find(item => item.id === id);
+        cartItem.count++;
+        cartItem.total = cartItem.count * cartItem.price;
+        cartItem.total = parseFloat(cartItem.total.toFixed(2));
+        this.setState(() => {
+            return {
+                cart: [...tempCart]
+            }
+        }, ()=>{
+            this.addTotals();
+            this.syncStorage();
+                }
+            )
+        }
 
     decrement = (id) => {
-        console.log('decrement',id);
+        let tempCart = [...this.state.cart];
+       const cartItem = tempCart.find(item => item.id === id);
+       cartItem.count--;
+       if(cartItem.count === 0) {
+           this.removeItem(id);
+       } else {
+        cartItem.total = cartItem.count * cartItem.price;
+        cartItem.total = parseFloat(cartItem.total.toFixed(2));
+         this.setState(() => {
+             return {
+                 cart: [...tempCart]
+             }
+         }, ()=>{
+             this.addTotals();
+             this.syncStorage();
+                 }
+             )
+       }
+       
+
     }
 
     removeItem = (id) => {
-        console.log('removeItem',id);
+        let tempCart = [...this.state.cart];
+        tempCart = tempCart.filter(item => item.id !== id);
+        this.setState({
+            cart: [...tempCart]
+        }, ()=>{
+            this.addTotals();
+            this.syncStorage();
+        }
+    )
     }
 
     clearCart = () => {
-        console.log('clearCart');
+        this.setState({
+            cart: []
+        },()=>{
+            this.addTotals();
+            this.syncStorage();
+            }
+        );
     }
 
     render() {

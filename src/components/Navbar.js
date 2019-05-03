@@ -31,6 +31,7 @@ export default function Navbar() {
 const NavWrapper = styled.nav`
     position:-webkit-sticky;
     position: sticky;
+    z-index: 9999;
     top:0;
     width: 100%;
     padding: 1rem 1.5rem;
