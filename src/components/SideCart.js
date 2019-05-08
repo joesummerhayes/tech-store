@@ -10,7 +10,6 @@ export default function SideCart() {
         <ProductConsumer>
             {value => {
                 const {cartOpen, closeCart, cart, cartTotal} = value;
-                console.log(cart)
                 return <CartWrapper show={cartOpen} onClick={closeCart}>
                 <ul className="mt-4">
                     {cart.map((item) => {
