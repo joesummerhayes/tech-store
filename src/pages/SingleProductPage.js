@@ -21,7 +21,7 @@ export default function SingleProductPage() {
                 return <section className="py-5">
                             <div className="container">
                                 <div className="row">
-                                    <img src={`../${image}`} alt="single product" className="img-fluid" />
+                                    <img src={image} alt="single product" className="img-fluid" />
                                 </div>
                                 <div className="col-10 mx-auto col-sm-8 col-md3 my-3">
                                 <h5 className="text-title mb-4">model: {title}</h5>
